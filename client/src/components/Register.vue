@@ -11,6 +11,7 @@
      <hr style="border:3px solid greenyellow">
      <br/>
      <p style="color:greenyellow">{{reg_message}}</p>
+     <p style="color:greenyellow">{{reg_message2}}</p>
      <br/>
      <h2>Users</h2>
      <table class="styled-table">
@@ -55,7 +56,8 @@
         nazwisko: '',
         email:'',
         users:[],
-        reg_message: ''
+        reg_message: '',
+        reg_message2:''
       }
     },
 
@@ -68,6 +70,33 @@
     watch: {
       email(value) {
         //console.log(`email has changed ${value}`)
+      },
+
+      imie(value) {
+        if(value == '') {
+          setTimeout(()=>{
+            this.reg_message2 = ''
+          },2000)
+          this.reg_message2 = 'Podaj imie'
+        }
+      },
+
+      nazwisko(value) {
+        if(value == '') {
+          setTimeout(()=>{
+            this.reg_message2 = ''
+          },2000)
+          this.reg_message2 = 'Podaj nazwisko'
+        }
+      },
+
+      email(value) {
+        if(value == '') {
+          setTimeout(()=>{
+            this.reg_message2 = ''
+          },2000)
+          this.reg_message2 = 'Podaj email'
+        }
       },
 
       reg_message() {
