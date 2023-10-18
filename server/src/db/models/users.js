@@ -13,6 +13,7 @@ class Users {
             email:{type:String},
             logged:{type:Boolean}
           });
+
     }
 
     async userSave(res=Response,json=Object) {
@@ -50,6 +51,41 @@ class Users {
            res.send({message:message,data:data})
         })
         return 1;
+    }
+
+    async getUser(res=Response,id_user) {
+      
+      try {
+        await this.users.findById(id_user).then(function(data){
+          res.send({message:`User found: ${id_user}`,data:data})
+        })
+      }catch(err) {
+        console.log(err.message)
+      }
+     return 1;
+    }
+
+    async updateUser(res=Response,user) {
+      
+      const update = {
+        email:user.email,
+        imie:user.imie,
+        nazwisko:user.nazwisko
+      }
+
+      const id_user   = {
+         _id :user.id_user
+      }
+
+
+      try {
+        await this.users.findOneAndUpdate(id_user,update).then(function(data){
+          res.send({message:`User ${update.imie} ${update.nazwisko} updated!`})
+        })
+      }catch(err) {
+        console.log(err.message)
+      }
+     return 1;
     }
 }
 

@@ -21,7 +21,8 @@
           <th>Imie</th>
           <th>Nazwisko</th>
           <th>Email</th>
-          <td>-</td>
+          <th>-</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
           <td>{{user.nazwisko}}</td>
           <td>{{user.email}}</td>
           <td><button @click="deleteUser(user._id)" >x</button></td>
+          <td><button @click="editUser(user._id)">Edit</button></td>
          </tr>
       </tbody>
       
@@ -123,8 +125,15 @@
       async deleteUser(id_user) {
         const response = await Api('delete',`deleteUser/${id_user}`)
         this.reg_message = response.data.message
+      },
+
+      editUser(id_user) {
+         window.location.href=`/editUser/${id_user}` 
+         return;
       }
     },
+
+
   
   }
 </script>

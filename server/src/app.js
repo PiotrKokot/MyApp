@@ -58,6 +58,33 @@ app.delete('/deleteUser/:id_user',(req,res) => {
 
 })
 
+/**
+ *
+ * get user info by id_user
+ * */
+app.get('/getUser/:id_user',(req,res)=>{
+  const id_user = req.params.id_user
+  user.getUser(res,id_user)
+})
+
+/**
+ *
+ * update user info 
+ * */
+app.post('/updateUser',(req,res)=> {
+  
+  const userData = {
+    
+    imie:req.body.imie,
+    nazwisko:req.body.nazwisko,
+    email:req.body.email,
+    id_user:req.body.id_user
+
+  }
+  user.updateUser(res,userData)
+})
+
+
 
 app.listen(process.env.PORT || port)
 console.log(`Server is running on port: ${port}`)

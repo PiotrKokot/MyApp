@@ -14,8 +14,6 @@ export default (method,url,credentials) => {
       return axios.delete(`${serverUrl}/${url}`)
     }
 
-
-
     return axios.get(`${serverUrl}/${url}`,credentials="")
 }
 
